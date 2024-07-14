@@ -23,6 +23,11 @@ class ToggleState: ViewModel() {
     val isConfirm: StateFlow<Boolean> = _isConfirm
     private val _isSuccess= MutableStateFlow<Boolean>(false)
     val isSuccess: StateFlow<Boolean> = _isSuccess
+    private val _isShowScreenSongsPlayList= MutableStateFlow<Boolean>(false)
+    val isShowScreenSongsPlayList: StateFlow<Boolean> = _isShowScreenSongsPlayList
+    private val _isShowAlertDialogPlayList= MutableStateFlow<Boolean>(false)
+    val isShowAlertDialogPlayList: StateFlow<Boolean> = _isShowAlertDialogPlayList
+
 
     init {
         initToggleState()
@@ -33,6 +38,17 @@ class ToggleState: ViewModel() {
         _isShowOptionForUser.value=false
         _showLoading.value=false
         _showAlertDialog.value=false
+    }
+
+    fun updateToggleShowScreenSongsPlayList(value:Boolean){
+        viewModelScope.launch {
+            _isShowScreenSongsPlayList.emit(value)
+        }
+    }
+    fun updateToggleShowAlertDialogPlayList(value:Boolean){
+        viewModelScope.launch {
+            _isShowAlertDialogPlayList.emit(value)
+        }
     }
     fun updateToggleShowOptionSleep(value:Boolean){
         viewModelScope.launch {

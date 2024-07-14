@@ -15,10 +15,12 @@ import com.example.myappmusic.library.FolderScreen
 fun LibraryChildScreen(idButton: Int, showScreenPlayerMusic: (Boolean) -> Unit) {
     val showFolderScreen = remember { mutableStateOf(idButton == 1) }
     val showArtistsScreen = remember { mutableStateOf(idButton == 3) }
+    val showPlaylistScreen = remember { mutableStateOf(idButton == 2) }
 
     // Update visibility states based on idButton changes
     showFolderScreen.value = (idButton == 1)
     showArtistsScreen.value = (idButton == 3)
+    showPlaylistScreen.value = (idButton == 2)
 
     Box {
         AnimatedVisibility(
@@ -35,6 +37,14 @@ fun LibraryChildScreen(idButton: Int, showScreenPlayerMusic: (Boolean) -> Unit) 
             exit = slideOutHorizontally(targetOffsetX = { it }) + fadeOut()
         ) {
             ArtistsScreen()
+        }
+
+        AnimatedVisibility(
+            visible = showPlaylistScreen.value,
+            enter = slideInHorizontally(initialOffsetX = { it }) + fadeIn(),
+            exit = slideOutHorizontally(targetOffsetX = { it }) + fadeOut()
+        ) {
+            PlaylistScreen()
         }
     }
 }

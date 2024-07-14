@@ -68,6 +68,7 @@ import config.Const
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import mainmenu.library.SongsPlaylist
 import model.BottomNavigationBarItem
 import model.bottomNavigationBarItemList
 import musicplayer.MusicPlayerScreen
@@ -94,6 +95,9 @@ fun MenuScreen(navControllerApp: NavController){
     var isShowScreenPlayerMusic= remember {
         mutableStateOf<Boolean>(false)
     }
+    var isShowScreenSongsPlayList= remember {
+        mutableStateOf<Boolean>(false)
+    }
     var idSong= remember {
         mutableStateOf(value = PreferenceManager.getData(key=Const.KEY_ID_SONG))
     }
@@ -117,6 +121,12 @@ fun MenuScreen(navControllerApp: NavController){
                 toggleState.showScreenPlayerMusic.collect{
                     isShowCurrent->
                     isShowScreenPlayerMusic.value=isShowCurrent
+                }
+            }
+            launch {
+                toggleState.isShowScreenSongsPlayList.collect{
+                        isShowCurrent->
+                    isShowScreenSongsPlayList.value=isShowCurrent
                 }
             }
         }
@@ -169,6 +179,13 @@ fun MenuScreen(navControllerApp: NavController){
             exit = slideOutVertically(targetOffsetY = { it }) + fadeOut()
         ) {
            MusicPlayerScreen()
+        }
+        AnimatedVisibility(
+            visible = isShowScreenSongsPlayList.value,
+            enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
+            exit = slideOutVertically(targetOffsetY = { it }) + fadeOut()
+        ) {
+            SongsPlaylist()
         }
     }
 

@@ -11,3 +11,6 @@ val LocalMusicPlayerState = compositionLocalOf<MusicPlayerState> {
 val LocalToggle = compositionLocalOf<ToggleState> {
     error("MusicPlayerState not provided")
 }
+val LocalValueDialog = compositionLocalOf<ValueAlertDialog> {
+    error("MusicPlayerState not provided")
+}

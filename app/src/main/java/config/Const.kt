@@ -26,6 +26,8 @@ object Const {
     const val KEY_CONTENT_DIALOG_PROCESSING_UPLOAD_FILE:String  = "Processing upload" // Title dialog when upload file
     const val KEY_CONTENT_DIALOG_PROCESSING_DOWNLOAD_FILE:String  = "Processing download" // Title dialog when upload file
     const val KEY_CONTENT_DIALOG_CONFIRM_DOWNLOAD_FILE:String  = "Do you want download this file ?" // Title dialog when upload file
+    const val KEY_CONTENT_DIALOG_ADD_THIS_SONG_PLAY_LIST:String  = "Add this song " // Title dialog when upload file
+    const val KEY_CONTENT_DIALOG_CREATE_PLAY_LIST:String  = "New playlist" // Title dialog when upload file
     const val KEY_TITLE_ADD:String  = "Add New Playlist"// Title add new song playlist
     const val KEY_TITLE_ADD_TO_PLAY_LIST:String  = "Add To Playlist"
     const val KEY_TITLE_ADD_TO_QUEUE:String  = "Add To Queue"
@@ -33,6 +35,7 @@ object Const {
     const val KEY_TITLE_DOWNLOAD:String  = "Download"
     const val KEY_TITLE_RECENTLY_PLAYER:String  = "Recently played"
     const val KEY_TITLE_SORT_BY:String  = "Recently played"
+    const val KEY_CONTENT_BUTTON_CREATE:String  = "Create"
 
     const val KEY_TITLE_STOP_AUDIO:String  = "Stop audio in"
     const val KEY_TITLE_END_OF_TRACK:String  = "End of Track"
@@ -56,6 +59,7 @@ object Const {
     const val KEY_DATA_STATE_LISTENING_RANDOM:String  = "Random"
     const val KEY_STATE_PAUSE:String  = "PAUSE"
     const val KEY_STATE_PLAY:String  = "PLAY"
+    const val KEY_ID_PLAY_LIST:String  = "Id playlist"
 
 
 

@@ -25,8 +25,6 @@ fun createDataHome(): List<ItemListHome> {
                 ItemContent(nameContent = "RELEASED", imgContent = R.drawable.img3_type1),
                 ItemContent(nameContent = "Anime OSTs", imgContent = R.drawable.img4_type1),
                 ItemContent(nameContent = "Lo-Fi Beats", imgContent = R.drawable.img5_type1),
-
-
             ),
             type = "grid"
         ),
@@ -55,7 +53,7 @@ fun createDataHome(): List<ItemListHome> {
 fun createDataExplore(): List<ItemListHome> {
     return listOf(
         ItemListHome(
-            nameCategory = "Continue Listening",
+            nameCategory = "Your Top Genres",
             itemsContent = listOf(
                 ItemContent(nameContent = "Coffee & Jazz", imgContent = R.drawable.img1_type1),
                 ItemContent(nameContent = "Anything Goes", imgContent = R.drawable.img2_type1),
@@ -63,8 +61,6 @@ fun createDataExplore(): List<ItemListHome> {
                 ItemContent(nameContent = "RELEASED", imgContent = R.drawable.img3_type1),
                 ItemContent(nameContent = "Anime OSTs", imgContent = R.drawable.img4_type1),
                 ItemContent(nameContent = "Lo-Fi Beats", imgContent = R.drawable.img5_type1),
-
-
                 ),
             type = "list"
         ),
@@ -77,7 +73,7 @@ fun createDataExplore(): List<ItemListHome> {
             type = "list"
         ),
         ItemListHome(
-            nameCategory = "Based on your recent listening",
+            nameCategory = "Browse All",
             itemsContent = listOf(
                 ItemContent(nameContent = "", imgContent = R.drawable.img2_type3),
                 ItemContent(nameContent = "", imgContent = R.drawable.img1_type3),

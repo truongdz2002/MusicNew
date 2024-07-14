@@ -1,6 +1,7 @@
 package component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -17,16 +18,22 @@ import androidx.compose.ui.unit.sp
 import theme.primaryColor
 
 @Composable
-fun ItemOptionFolderLibrary(title:String,painter: Painter){
+fun ItemOptionFolderLibrary(title:String,painter: Painter,onClick:()->Unit){
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.padding(bottom =16.dp)
+            .clickable {
+                onClick()
+            },
+
     ){
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
-                .size(56.dp) // Kích thước của hình tròn
-                .background(primaryColor, shape = CircleShape),
+                .size(56.dp)
+                .background(primaryColor, shape = CircleShape)
+
 
             )
         {

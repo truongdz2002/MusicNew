@@ -19,4 +19,5 @@ val DarkCharcoal=Color(0xFF06A0B5)
 val AbsoluteBlack=Color(0xFF0E0E0E)
 val SilverSand=Color(0xFFDBE7E8)
 val DeepBlack=Color(0xFF1E1E1E)
+val GrayishBlue=Color(0xFF8A9A9D)
 

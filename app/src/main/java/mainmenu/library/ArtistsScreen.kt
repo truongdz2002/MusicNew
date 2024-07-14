@@ -137,17 +137,23 @@ fun ListArtistRecently(
         R.drawable.img_singer1,
     )
     val playerState= LocalMusicPlayerState.current
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+    LazyColumn(
+        modifier = Modifier.fillMaxSize()
+            .padding(top = 20.dp)
+       ) {
         items(listArtistName.size) { index ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
+
                 modifier = Modifier.clickable(onClick = {
                     onClick(listArtistName[index])
                     PreferenceManager.saveData(key = Const.KEY_TYPE_LIST, value = Const.KEY_DATA_TYPE_LIST_ARTIST)
                     PreferenceManager.saveData(key = Const.KEY_DATA_NAME_ARTIST, value = listArtistName[index])
                     playerState.toggleUpdateListType()
                     playerState.toggleUpdateArtistName()
-                })
+                }
+                    )
+                    .padding(top = 10.dp)
             ) {
                 CustomCircleImage(painter = painterResource(id = drawableList.random()))
                 Text(

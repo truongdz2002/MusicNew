@@ -60,6 +60,7 @@ import androidx.compose.ui.unit.sp
 import com.example.myappmusic.component.CustomCircleImage
 import component.CustomAlertDialogConfirm
 import component.CustomAlertDialogProcess
+import component.CustomAlertDialogShowPlaylist
 
 import component.CustomIconButton
 import component.CustomUiControlPlayerMusic
@@ -110,6 +111,9 @@ fun MusicPlayerScreen() {
     val isShowAlertDialog= remember {
         mutableStateOf(value = false)
     }
+    val isShowAlertDialogPlaylist= remember {
+        mutableStateOf(value = false)
+    }
     val titleTopAppBar= remember {
         mutableStateOf("....Loading")
     }
@@ -153,6 +157,13 @@ fun MusicPlayerScreen() {
                 toggleState.showAlertDialog.collect{
                         isShowAlertDialogCurrent->
                     isShowAlertDialog.value=isShowAlertDialogCurrent
+
+                }
+            }
+            launch {
+                toggleState.isShowAlertDialogPlayList.collect{
+                    isShowAlertDialogCurrent->
+                    isShowAlertDialogPlaylist.value=isShowAlertDialogCurrent
 
                 }
             }
@@ -253,6 +264,20 @@ fun MusicPlayerScreen() {
                                toggleState.updateToggleAlertDialog(value=false)
                            } )
                    }
+                   AnimatedVisibility(
+                       visible =  isShowAlertDialogPlaylist.value,
+                       enter = slideInHorizontally(initialOffsetX = { it }) + fadeIn(),
+                       exit = slideOutHorizontally(targetOffsetX = { -it }) + fadeOut()
+                   ) {
+                       CustomAlertDialogShowPlaylist(
+                           statusMessage = Const.KEY_CONTENT_DIALOG_ADD_THIS_SONG_PLAY_LIST,
+                           onConfirm = {
+                               toggleState.updateToggleShowAlertDialogPlayList(value=false)
+                           },
+                           onCancel ={
+                               toggleState.updateToggleShowAlertDialogPlayList(value=false)
+                           } )
+                   }
 
 
                }
@@ -261,9 +286,10 @@ fun MusicPlayerScreen() {
 
 @Composable
 fun OptionSleep() {
-    val configuration = LocalConfiguration.current
+
     val playerState= LocalMusicPlayerState.current
     val toggleState= LocalToggle.current
+    val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
     Box(modifier = Modifier
         .fillMaxSize()
@@ -366,8 +392,12 @@ fun OptionForUser( ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.clickable {
+                            when(listCardContentAndIconButton()[index].id){
+                                1->toggleState.updateToggleShowAlertDialogPlayList(value=true)
+                                5->toggleState.updateToggleShowOptionSleep(value = true)
+                            }
                             toggleState.updateToggleShowOptionForUser(value = false)
-                            toggleState.updateToggleShowOptionSleep(value = true)
+
                         }
                     ) {
                         CustomIconButton(painter = painterResource(id =  listCardContentAndIconButton()[index].icon), onClick = {
